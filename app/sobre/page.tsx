@@ -36,15 +36,15 @@ const etapas = [
 export default function PaginaSobre() {
   return (
     <div className="mx-auto w-full max-w-[1200px] space-y-16 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-      <section className="grid items-center gap-8 lg:grid-cols-[1.4fr_0.8fr] lg:gap-14">
+      <section data-reveal className="grid items-center gap-8 lg:grid-cols-[1.4fr_0.8fr] lg:gap-14">
         <div className="space-y-5">
-          <span className="inline-flex rounded-full border border-[#130e30]/15 bg-[#eff2e5] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#130e30]">
+          <span className="motion-enter motion-delay-1 inline-flex rounded-full border border-[#130e30]/15 bg-[#eff2e5] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#130e30]">
             Sobre o projeto
           </span>
-          <h1 className="max-w-3xl font-serif text-4xl font-bold leading-tight text-[#130e30] sm:text-5xl">
+          <h1 className="motion-enter motion-delay-2 max-w-3xl font-serif text-4xl font-bold leading-tight text-[#130e30] sm:text-5xl">
             Uma iniciativa escolar para aproximar quem pode doar de quem precisa.
           </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-[#5f5c6e] sm:text-lg">
+          <p className="motion-enter motion-delay-3 max-w-2xl text-base leading-relaxed text-[#5f5c6e] sm:text-lg">
             Desenvolvi o Banco de Troca Escolar para facilitar a doação de livros, uniformes e outros materiais entre estudantes e famílias. A ideia é ajudar a reduzir gastos, dar novo uso a itens em bom estado e tornar mais simples encontrar materiais por escola e série.
           </p>
           <div className="flex flex-col gap-3 pt-1 sm:flex-row">
@@ -72,15 +72,15 @@ export default function PaginaSobre() {
         </aside>
       </section>
 
-      <section aria-labelledby="problema-titulo" className="grid gap-5 md:grid-cols-2">
-        <article className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6 sm:p-8">
+      <section data-reveal aria-labelledby="problema-titulo" className="grid gap-5 md:grid-cols-2">
+        <article data-reveal-item className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6 sm:p-8">
           <p className="text-xs font-bold uppercase tracking-wider text-[#5f5c6e]">O problema</p>
           <h2 id="problema-titulo" className="mt-2 font-serif text-2xl font-bold text-[#130e30]">Materiais custam, e muitos ainda podem ser usados.</h2>
           <p className="mt-3 text-sm leading-relaxed text-[#5f5c6e]">
             No começo do ano letivo, comprar livros, uniformes e outros itens pode pesar no orçamento. Ao mesmo tempo, materiais em boas condições podem ficar guardados depois que deixam de servir para uma família.
           </p>
         </article>
-        <article className="rounded-3xl border border-[#130e30]/15 bg-[#eff2e5] p-6 sm:p-8">
+        <article data-reveal-item className="rounded-3xl border border-[#130e30]/15 bg-[#eff2e5] p-6 sm:p-8">
           <p className="text-xs font-bold uppercase tracking-wider text-[#5f5c6e]">A proposta</p>
           <h2 className="mt-2 font-serif text-2xl font-bold text-[#130e30]">Facilitar a doação e o encontro entre as pessoas.</h2>
           <p className="mt-3 text-sm leading-relaxed text-[#5f5c6e]">
@@ -89,7 +89,7 @@ export default function PaginaSobre() {
         </article>
       </section>
 
-      <section aria-labelledby="diferencial-titulo" className="space-y-6">
+      <section data-reveal aria-labelledby="diferencial-titulo" className="space-y-6">
         <div className="mx-auto max-w-3xl space-y-3 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#ffe228] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#130e30]">
             <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
@@ -104,7 +104,7 @@ export default function PaginaSobre() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
-          <article className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6">
+          <article data-reveal-item className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6">
             <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#ffe228] text-[#130e30]">
               <MapPin className="h-5 w-5" aria-hidden="true" />
             </div>
@@ -112,12 +112,12 @@ export default function PaginaSobre() {
             <p className="mt-2 text-sm leading-relaxed text-[#5f5c6e]">
               Uma campanha da Prefeitura de Porto Velho em 2024 reuniu materiais escolares para envio ao Rio Grande do Sul e indicou pontos físicos de coleta. O site complementa ações desse tipo com anúncios individuais consultáveis no catálogo.
             </p>
-            <a href="https://www.portovelho.ro.gov.br/artigo/45345/" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
+            <a href="https://www.portovelho.ro.gov.br/artigo/45345/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
               Ver notícia da Prefeitura <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </article>
 
-          <article className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6">
+          <article data-reveal-item className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6">
             <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#eff2e5] text-[#130e30]">
               <BookOpen className="h-5 w-5" aria-hidden="true" />
             </div>
@@ -125,12 +125,12 @@ export default function PaginaSobre() {
             <p className="mt-2 text-sm leading-relaxed text-[#5f5c6e]">
               A Biblioteca Municipal Francisco Meirelles recebe livros conforme critérios de conservação e interesse do acervo, e informa que não aceita livros didáticos. O Banco de Troca Escolar contempla também uniformes e outros materiais cadastrados no sistema.
             </p>
-            <a href="https://sites.google.com/view/bibliotecafranciscomeirelles/servi%C3%A7os/doa%C3%A7%C3%B5es" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
+            <a href="https://sites.google.com/view/bibliotecafranciscomeirelles/servi%C3%A7os/doa%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
               Ver critérios da biblioteca <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </article>
 
-          <article className="rounded-3xl border border-[#130e30]/15 bg-[#eff2e5] p-6">
+          <article data-reveal-item className="rounded-3xl border border-[#130e30]/15 bg-[#eff2e5] p-6">
             <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#130e30]">
               <School className="h-5 w-5" aria-hidden="true" />
             </div>
@@ -138,7 +138,7 @@ export default function PaginaSobre() {
             <p className="mt-2 text-sm leading-relaxed text-[#5f5c6e]">
               Em vez de um classificado para qualquer produto, o foco aqui é material escolar doado gratuitamente. A busca permite combinar escola, série, categoria e conservação; os pedidos também acompanham a proposta de entrega e a confirmação por código.
             </p>
-            <a href="https://ajuda.olx.com.br/s/article/como-publicar-anuncio" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
+            <a href="https://ajuda.olx.com.br/s/article/como-publicar-anuncio" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
               Ver como funcionam anúncios gerais na OLX <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </article>
@@ -149,7 +149,7 @@ export default function PaginaSobre() {
         </p>
       </section>
 
-      <section aria-labelledby="fluxo-titulo" className="space-y-6">
+      <section data-reveal aria-labelledby="fluxo-titulo" className="space-y-6">
         <div className="mx-auto max-w-2xl space-y-2 text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5f5c6e]">
             <CalendarDays className="h-4 w-4" aria-hidden="true" />
@@ -162,7 +162,7 @@ export default function PaginaSobre() {
         </div>
         <ol className="grid gap-4 sm:grid-cols-2">
           {etapas.map((etapa) => (
-            <li key={etapa.numero} className="flex gap-4 rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-5 sm:p-6">
+            <li key={etapa.numero} data-reveal-item className="flex gap-4 rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-5 sm:p-6">
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#ffe228] text-sm font-bold text-[#130e30]">
                 {etapa.numero}
               </span>
@@ -175,7 +175,7 @@ export default function PaginaSobre() {
         </ol>
       </section>
 
-      <section className="mx-auto flex max-w-3xl gap-4 rounded-3xl border border-[#130e30]/15 bg-[#eff2e5] p-5 sm:p-7">
+      <section data-reveal className="mx-auto flex max-w-3xl gap-4 rounded-3xl border border-[#130e30]/15 bg-[#eff2e5] p-5 sm:p-7">
         <LockKeyhole className="mt-1 h-5 w-5 flex-shrink-0 text-[#130e30]" aria-hidden="true" />
         <div className="space-y-2">
           <h2 className="font-serif text-xl font-bold text-[#130e30]">Confirmação e segurança</h2>
@@ -186,7 +186,7 @@ export default function PaginaSobre() {
         <CheckCircle2 className="mt-1 hidden h-5 w-5 flex-shrink-0 text-emerald-700 sm:block" aria-hidden="true" />
       </section>
 
-      <section aria-labelledby="privacidade-pedidos-titulo" className="mx-auto flex max-w-3xl gap-4 rounded-3xl border border-[#130e30]/15 bg-white p-5 sm:p-7">
+      <section data-reveal aria-labelledby="privacidade-pedidos-titulo" className="mx-auto flex max-w-3xl gap-4 rounded-3xl border border-[#130e30]/15 bg-white p-5 sm:p-7">
         <LockKeyhole className="mt-1 h-5 w-5 flex-shrink-0 text-[#130e30]" aria-hidden="true" />
         <div className="space-y-2">
           <h2 id="privacidade-pedidos-titulo" className="font-serif text-xl font-bold text-[#130e30]">O que fica visível em um pedido</h2>
@@ -196,7 +196,7 @@ export default function PaginaSobre() {
         </div>
       </section>
 
-      <section id="reportar-problema" aria-labelledby="reportar-titulo" className="scroll-mt-24">
+      <section data-reveal id="reportar-problema" aria-labelledby="reportar-titulo" className="scroll-mt-24">
         <div className="mx-auto mb-6 max-w-2xl space-y-2 text-center">
           <h2 id="reportar-titulo" className="font-serif text-3xl font-bold text-[#130e30]">Relatos e solicitações de privacidade</h2>
           <p className="text-sm leading-relaxed text-[#5f5c6e] sm:text-base">

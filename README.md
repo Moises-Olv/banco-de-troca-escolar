@@ -55,7 +55,7 @@ As imagens abaixo mostram as principais áreas da aplicação. Clique em uma ima
 - **Relatos e privacidade:** formulário para problemas técnicos, erros de conteúdo, acessibilidade, sugestões e solicitações de dados pessoais. Solicitações de privacidade são analisadas manualmente; o formulário não apaga dados automaticamente.
 - **Administração:** painel restrito a administradores com métricas, moderação de relatos e denúncias, retirada de anúncios e convites de uso único para outros administradores. Convites expiram em sete dias e só podem ser aceitos pela conta de e-mail confirmada correspondente.
 - **Páginas informativas:** Sobre, Política de Privacidade e Termos de Uso.
-- **Interface:** tema claro/escuro, layout responsivo, animação de fundo, foco de teclado e link para pular ao conteúdo principal.
+- **Interface:** tema claro/escuro, layout responsivo, fundo animado, entradas suaves ao rolar, microinterações nos cards e respeito à preferência de movimento reduzido do dispositivo; também oferece foco de teclado e link para pular ao conteúdo principal.
 
 ## Contexto e diferencial
 

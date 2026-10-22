@@ -14,7 +14,7 @@ export default function CarrosselMateriaisDestaque({ materiais }: Props) {
   const [pausado, setPausado] = useState(false);
 
   useEffect(() => {
-    if (materiais.length < 2 || pausado) return;
+    if (materiais.length < 2 || pausado || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const temporizador = window.setInterval(() => {
       setIndice((atual) => (atual + 1) % materiais.length);
     }, 6000);
@@ -73,7 +73,7 @@ export default function CarrosselMateriaisDestaque({ materiais }: Props) {
       <article
         key={material.id}
         aria-live="polite"
-        className="grid grid-cols-[104px_minmax(0,1fr)] gap-4 border-t border-[#130e30]/10 pt-4 sm:grid-cols-[132px_minmax(0,1fr)]"
+        className="carousel-slide grid grid-cols-[104px_minmax(0,1fr)] gap-4 border-t border-[#130e30]/10 pt-4 sm:grid-cols-[132px_minmax(0,1fr)]"
       >
         {material.imagem ? (
           <img

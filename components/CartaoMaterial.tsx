@@ -33,14 +33,16 @@ export default function CartaoMaterial({ material }: CartaoMaterialProps) {
   };
 
   return (
-    <article className="group bg-[#eff2e5] rounded-[24px] border border-[#130e30]/10 p-6 sm:p-7 flex flex-col justify-between transition-all duration-200 hover:border-[#130e30]/30">
+    <article className="material-card group bg-[#eff2e5] rounded-[24px] border border-[#130e30]/10 p-6 sm:p-7 flex flex-col justify-between hover:border-[#130e30]/30">
       <div>
         {material.imagem && (
-          <img
-            src={material.imagem}
-            alt={`Foto de ${material.titulo}`}
-            className="mb-5 aspect-[4/3] w-full rounded-2xl border border-[#130e30]/10 bg-white object-cover"
-          />
+          <div className="mb-5 aspect-[4/3] overflow-hidden rounded-2xl border border-[#130e30]/10 bg-white">
+            <img
+              src={material.imagem}
+              alt={`Foto de ${material.titulo}`}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            />
+          </div>
         )}
 
         {/* Badges de Topo (Pill Radius 1440px) */}

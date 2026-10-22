@@ -57,21 +57,21 @@ export default async function PaginaInicial() {
             
             {/* Coluna Esquerda: Título, Proposta e Botões */}
             <div className="lg:col-span-6 space-y-6 text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#eff2e5] border border-[#130e30]/15 text-[#130e30] text-xs font-sans font-bold tracking-wider uppercase">
+              <div className="motion-enter motion-delay-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#eff2e5] border border-[#130e30]/15 text-[#130e30] text-xs font-sans font-bold tracking-wider uppercase">
                 <Sparkles className="w-3.5 h-3.5 text-[#130e30]" />
                 Iniciativa Escolar Solidária
               </div>
 
-              <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-[#130e30] leading-[1.05] tracking-tight">
+              <h1 className="motion-enter motion-delay-2 font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-[#130e30] leading-[1.05] tracking-tight">
                 Dê uma nova vida aos materiais escolares.
               </h1>
 
-              <p className="font-sans text-[#5f5c6e] text-base sm:text-lg leading-relaxed max-w-xl">
+              <p className="motion-enter motion-delay-3 font-sans text-[#5f5c6e] text-base sm:text-lg leading-relaxed max-w-xl">
                 Um catálogo aberto para encontrar e oferecer livros, uniformes e materiais escolares por escola e série, sem depender de grupos fechados. Todas as doações são gratuitas: não há venda nem troca.
               </p>
 
               {/* Botões de Ação: Hi-Yellow + Dark Pill */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              <div className="motion-enter motion-delay-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
                 <Link
                   href="/catalogo"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#ffe228] hover:bg-[#f6d91d] text-[#130e30] font-sans font-bold text-base transition-colors"
@@ -90,7 +90,7 @@ export default async function PaginaInicial() {
               </div>
 
               {/* Micro-destaques informativos */}
-              <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-[#5f5c6e] font-sans">
+              <div className="motion-enter motion-delay-5 pt-4 flex flex-wrap items-center gap-6 text-xs text-[#5f5c6e] font-sans">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#130e30]" />
                   <span>E-mail não exibido no perfil público</span>
@@ -110,7 +110,7 @@ export default async function PaginaInicial() {
             <div className="lg:col-span-6 relative flex items-center justify-center">
 
               {/* Container Flutuante de Apresentação (Hero Card) */}
-              <div className="relative z-10 w-full max-w-lg bg-[#ffffff] rounded-[24px] border border-[#130e30] p-6 sm:p-7 shadow-none space-y-4">
+              <div className="hero-showcase relative z-10 w-full max-w-lg bg-[#ffffff] rounded-[24px] border border-[#130e30] p-6 sm:p-7 shadow-none space-y-4">
                 <div className="flex items-center justify-between border-b border-[#130e30]/10 pb-3">
                   <div className="flex items-center gap-2.5">
                     <img
@@ -166,7 +166,7 @@ export default async function PaginaInicial() {
       </section>
 
       {/* Diferencial como complemento às iniciativas e canais existentes */}
-      <section aria-labelledby="titulo-diferencial" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <section data-reveal aria-labelledby="titulo-diferencial" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#130e30]/15 bg-[#f9fbf2] p-5 sm:p-8 lg:p-10">
           <div className="mb-7 max-w-3xl sm:mb-9">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#ffe228] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#130e30]">
@@ -181,7 +181,7 @@ export default async function PaginaInicial() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 sm:gap-6">
-            <article className="rounded-2xl border border-[#130e30]/10 bg-white p-5 sm:p-6">
+            <article data-reveal-item className="rounded-2xl border border-[#130e30]/10 bg-white p-5 sm:p-6">
               <h3 className="font-serif text-lg font-bold text-[#130e30]">Outros caminhos de doação</h3>
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[#5f5c6e]">
                 <li className="flex gap-2"><span aria-hidden="true">•</span><span>Campanhas e pontos de coleta podem atender ações específicas e locais definidos.</span></li>
@@ -190,7 +190,7 @@ export default async function PaginaInicial() {
               </ul>
             </article>
 
-            <article className="rounded-2xl border border-[#130e30]/15 bg-[#eff2e5] p-5 sm:p-6">
+            <article data-reveal-item className="rounded-2xl border border-[#130e30]/15 bg-[#eff2e5] p-5 sm:p-6">
               <h3 className="font-serif text-lg font-bold text-[#130e30]">No Banco de Troca Escolar</h3>
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[#5f5c6e]">
                 <li className="flex gap-2"><span aria-hidden="true">•</span><span>Visitantes consultam um catálogo público feito especificamente para materiais escolares.</span></li>
@@ -209,7 +209,7 @@ export default async function PaginaInicial() {
       </section>
 
       {dadosMetricas && (
-        <section aria-labelledby="titulo-impacto" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        <section data-reveal aria-labelledby="titulo-impacto" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-[28px] border border-[#130e30]/15 bg-[#f9fbf2] p-5 sm:p-8 lg:p-10">
             <div className="mb-6 max-w-2xl sm:mb-8">
               <span className="inline-flex items-center gap-2 rounded-full bg-[#ffe228] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#130e30]">
@@ -225,7 +225,7 @@ export default async function PaginaInicial() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-5">
-              <article className="rounded-2xl border border-[#130e30]/10 bg-[#eff2e5] p-4 sm:p-6">
+              <article data-reveal-item className="rounded-2xl border border-[#130e30]/10 bg-[#eff2e5] p-4 sm:p-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ffe228] text-[#130e30] sm:h-11 sm:w-11">
                   <School className="h-5 w-5" aria-hidden="true" />
                 </div>
@@ -234,7 +234,7 @@ export default async function PaginaInicial() {
                 <p className="mt-3 text-xs leading-relaxed text-[#5f5c6e] sm:text-sm">Materiais prontos para encontrar um novo estudante.</p>
               </article>
 
-              <article className="rounded-2xl border border-[#130e30]/10 bg-[#eff2e5] p-4 sm:p-6">
+              <article data-reveal-item className="rounded-2xl border border-[#130e30]/10 bg-[#eff2e5] p-4 sm:p-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#130e30] text-[#ffe228] sm:h-11 sm:w-11">
                   <HeartHandshake className="h-5 w-5" aria-hidden="true" />
                 </div>
@@ -248,7 +248,7 @@ export default async function PaginaInicial() {
       )}
 
       {/* Como funcionam as doações */}
-      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section data-reveal className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <span className="font-sans font-bold text-xs uppercase tracking-widest text-[#130e30]">
             Passo a Passo
@@ -262,7 +262,7 @@ export default async function PaginaInicial() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          <div className="bg-[#eff2e5] p-7 sm:p-8 rounded-[24px] border border-[#130e30]/15 space-y-4">
+          <div data-reveal-item className="bg-[#eff2e5] p-7 sm:p-8 rounded-[24px] border border-[#130e30]/15 space-y-4">
             <div className="w-12 h-12 bg-[#130e30] text-[#ffe228] rounded-full flex items-center justify-center font-bold text-lg font-sans">
               1
             </div>
@@ -272,7 +272,7 @@ export default async function PaginaInicial() {
             </p>
           </div>
 
-          <div className="bg-[#eff2e5] p-7 sm:p-8 rounded-[24px] border border-[#130e30]/15 space-y-4">
+          <div data-reveal-item className="bg-[#eff2e5] p-7 sm:p-8 rounded-[24px] border border-[#130e30]/15 space-y-4">
             <div className="w-12 h-12 bg-[#130e30] text-[#ffe228] rounded-full flex items-center justify-center font-bold text-lg font-sans">
               2
             </div>
@@ -282,7 +282,7 @@ export default async function PaginaInicial() {
             </p>
           </div>
 
-          <div className="bg-[#eff2e5] p-7 sm:p-8 rounded-[24px] border border-[#130e30]/15 space-y-4">
+          <div data-reveal-item className="bg-[#eff2e5] p-7 sm:p-8 rounded-[24px] border border-[#130e30]/15 space-y-4">
             <div className="w-12 h-12 bg-[#130e30] text-[#ffe228] rounded-full flex items-center justify-center font-bold text-lg font-sans">
               3
             </div>
@@ -295,7 +295,7 @@ export default async function PaginaInicial() {
       </section>
 
       {/* Vitrine de Materiais Recentes */}
-      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section data-reveal className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
             <span className="font-sans font-bold text-xs uppercase tracking-widest text-[#130e30]">
@@ -351,7 +351,7 @@ export default async function PaginaInicial() {
       </section>
 
       {/* Chamada para Publicação Solidária */}
-      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section data-reveal className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#eff2e5] rounded-[24px] border border-[#130e30] p-8 sm:p-14 text-[#130e30]">
           <div className="max-w-2xl space-y-4">
             <h2 className="font-serif font-bold text-3xl sm:text-4xl leading-tight">

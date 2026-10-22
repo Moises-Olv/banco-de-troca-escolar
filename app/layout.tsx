@@ -3,6 +3,7 @@ import "./globals.css";
 import Cabecalho from "@/components/Cabecalho";
 import Rodape from "@/components/Rodape";
 import FundoAnimadoDinamico from "@/components/FundoAnimadoDinamico";
+import RevelarAoRolar from "@/components/RevelarAoRolar";
 import { Hedvig_Letters_Serif, Inter } from "next/font/google";
 
 const fonteInter = Inter({
@@ -42,7 +43,7 @@ export default function RootLayout({
           </a>
           <Cabecalho />
           <main id="conteudo" tabIndex={-1} className="w-full flex-1 focus:outline-none">
-            {children}
+            <RevelarAoRolar>{children}</RevelarAoRolar>
           </main>
           <Rodape />
         </div>

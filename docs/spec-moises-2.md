@@ -145,6 +145,7 @@ Restrições centrais incluem: apenas o dono gerencia seu anúncio; só os parti
 - Supabase JS e Supabase SSR para acesso cliente/servidor, sessão, banco, Storage e Auth.
 - Supabase Postgres com políticas Row Level Security (RLS), views, funções RPC, gatilhos e scripts SQL em `supabase/`.
 - Tailwind CSS 4, Lucide React, Three.js, React Three Fiber e ShaderGradient.
+- Animações de entrada acionadas pela visibilidade das seções, microinterações dos cards e suporte a `prefers-reduced-motion`, sem adicionar dependências de animação.
 - Vercel é a plataforma de hospedagem documentada para produção.
 
 ## 7. Segurança e privacidade no desenho atual
