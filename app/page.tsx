@@ -67,7 +67,7 @@ export default async function PaginaInicial() {
               </h1>
 
               <p className="font-sans text-[#5f5c6e] text-base sm:text-lg leading-relaxed max-w-xl">
-                Conectamos estudantes e famílias para facilitar a doação de livros didáticos, uniformes e artigos escolares por escola e série. Todas as doações são gratuitas: não há venda nem troca.
+                Um catálogo aberto para encontrar e oferecer livros, uniformes e materiais escolares por escola e série, sem depender de grupos fechados. Todas as doações são gratuitas: não há venda nem troca.
               </p>
 
               {/* Botões de Ação: Hi-Yellow + Dark Pill */}
@@ -165,6 +165,49 @@ export default async function PaginaInicial() {
         </div>
       </section>
 
+      {/* Diferencial em relação aos grupos fechados */}
+      <section aria-labelledby="titulo-diferencial" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        <div className="rounded-[28px] border border-[#130e30]/15 bg-[#f9fbf2] p-5 sm:p-8 lg:p-10">
+          <div className="mb-7 max-w-3xl sm:mb-9">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#ffe228] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#130e30]">
+              Uma alternativa aos grupos fechados
+            </span>
+            <h2 id="titulo-diferencial" className="mt-4 font-serif text-2xl font-bold leading-tight text-[#130e30] sm:text-3xl">
+              Doações organizadas, sem se perder no meio da conversa.
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5f5c6e] sm:text-base">
+              Grupos de mensagens continuam sendo úteis para conversar e divulgar. O Banco de Troca complementa esses canais com um espaço público e organizado para localizar materiais e acompanhar cada pedido.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 sm:gap-6">
+            <article className="rounded-2xl border border-[#130e30]/10 bg-white p-5 sm:p-6">
+              <h3 className="font-serif text-lg font-bold text-[#130e30]">Em grupos de mensagens</h3>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[#5f5c6e]">
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>O alcance depende de a pessoa participar do grupo certo.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Um anúncio pode ficar para trás conforme novas mensagens chegam.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Encontrar por escola, série e categoria depende de como as mensagens foram escritas.</span></li>
+              </ul>
+            </article>
+
+            <article className="rounded-2xl border border-[#130e30]/15 bg-[#eff2e5] p-5 sm:p-6">
+              <h3 className="font-serif text-lg font-bold text-[#130e30]">No Banco de Troca Escolar</h3>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[#5f5c6e]">
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Visitantes podem consultar o catálogo sem entrar em um grupo.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Filtros ajudam a encontrar materiais por escola, série e categoria.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Pedido, proposta de data e horário e confirmação da entrega ficam no mesmo fluxo.</span></li>
+              </ul>
+              <Link
+                href="/catalogo"
+                className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#130e30] underline-offset-4 hover:underline"
+              >
+                Explorar o catálogo <ArrowRight className="h-4 w-4" />
+              </Link>
+            </article>
+          </div>
+        </div>
+      </section>
+
       {dadosMetricas && (
         <section aria-labelledby="titulo-impacto" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-[28px] border border-[#130e30]/15 bg-[#f9fbf2] p-5 sm:p-8 lg:p-10">
@@ -214,7 +257,7 @@ export default async function PaginaInicial() {
             Como funciona a doação?
           </h2>
           <p className="text-[#5f5c6e] text-sm sm:text-base font-sans">
-            Em três etapas simples você encontra o que precisa ou ajuda outra família da mesma escola.
+            Exemplo ilustrativo, sem anúncio real: veja como um livro pode chegar a outro estudante.
           </p>
         </div>
 
@@ -225,7 +268,7 @@ export default async function PaginaInicial() {
             </div>
             <h3 className="font-serif font-bold text-xl text-[#130e30]">Encontre por escola e série</h3>
             <p className="text-[#5f5c6e] text-sm leading-relaxed font-sans">
-              Consulte livros do ano letivo correto e uniformes da escola do seu filho no catálogo com busca e filtros por categoria e escola.
+              Por exemplo, uma família procura um livro do 6º ano e usa os filtros do catálogo para localizar materiais compatíveis.
             </p>
           </div>
 
@@ -233,9 +276,9 @@ export default async function PaginaInicial() {
             <div className="w-12 h-12 bg-[#130e30] text-[#ffe228] rounded-full flex items-center justify-center font-bold text-lg font-sans">
               2
             </div>
-            <h3 className="font-serif font-bold text-xl text-[#130e30]">Acompanhe o pedido</h3>
+            <h3 className="font-serif font-bold text-xl text-[#130e30]">Peça e combine a entrega</h3>
             <p className="text-[#5f5c6e] text-sm leading-relaxed font-sans">
-              Envie um pedido ao responsável pelo anúncio dentro da plataforma, sem expor número de telefone ou endereço residencial em público.
+              A pessoa interessada envia um pedido. Quem doou pode propor data, horário e uma mensagem; a outra pessoa confirma ou cancela a reserva.
             </p>
           </div>
 
@@ -243,9 +286,9 @@ export default async function PaginaInicial() {
             <div className="w-12 h-12 bg-[#130e30] text-[#ffe228] rounded-full flex items-center justify-center font-bold text-lg font-sans">
               3
             </div>
-            <h3 className="font-serif font-bold text-xl text-[#130e30]">Combine a entrega e conclua</h3>
+            <h3 className="font-serif font-bold text-xl text-[#130e30]">Registrem a conclusão</h3>
             <p className="text-[#5f5c6e] text-sm leading-relaxed font-sans">
-              O site organiza a reserva e a confirmação da entrega na escola indicada. A equipe do projeto não acompanha os encontros presencialmente.
+              Na entrega combinada, as pessoas confirmam o pedido com o código gerado pelo sistema. A equipe do projeto não acompanha os encontros presencialmente.
             </p>
           </div>
         </div>
