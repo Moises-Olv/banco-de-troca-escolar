@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep-ink: #130e30;
+  --color-hi-yellow: #ffe228;
+  --color-moss-green: #59e25d;
+  --color-fuchsia: #e261e5;
+  --color-slate: #5f5c6e;
+  --color-canvas: #f9fbf2;
+  --color-soft-meadow: #eff2e5;
+  --color-charcoal: #222222;
+  --color-onyx: #000000;
+  --font-serif: var(--font-hedvig-letters-serif), Georgia, Cambria, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-card: 24px;
+  --radius-pill: 1440px;
+  --spacing-18: 4.5rem;
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+:root {
+  --color-deep-ink: #130e30;
+  --color-hi-yellow: #ffe228;
+  --color-moss-green: #59e25d;
+  --color-fuchsia: #e261e5;
+  --color-slate: #5f5c6e;
+  --color-canvas: #f9fbf2;
+  --color-soft-meadow: #eff2e5;
+  --color-charcoal: #222222;
+  --color-onyx: #000000;
+
+  --font-hedvig-letters-serif: Georgia, Cambria, serif;
+  --font-inter: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: #f9fbf2;
+  color: #130e30;
+  font-family: var(--font-inter);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  color-scheme: light;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(19, 14, 48, 0.18);
+  border-radius: 9999px;
+  background: #f9fbf2;
+  color: #130e30;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.theme-toggle:hover {
+  background: #eff2e5;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid #130e30;
+  outline-offset: 2px;
+}
+
+.theme-image-dark {
+  display: none;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  background-color: #171620 !important;
+  color: #f4f1ff !important;
+}
+
+html[data-theme="dark"] [class~="bg-[#f9fbf2]"] {
+  background-color: #171620 !important;
+}
+
+html[data-theme="dark"] [class~="bg-[#eff2e5]"] {
+  background-color: #22212d !important;
+}
+
+html[data-theme="dark"] [class~="bg-[#ffffff]"] {
+  background-color: #2b2936 !important;
+}
+
+html[data-theme="dark"] [class~="bg-white"] {
+  background-color: #2b2936 !important;
+}
+
+/* Superfícies e avisos do painel administrativo */
+html[data-theme="dark"] .admin-panel [class~="bg-white/80"],
+html[data-theme="dark"] .admin-panel [class~="bg-white/85"] {
+  background-color: #22212d !important;
+}
+
+html[data-theme="dark"] .admin-panel [class~="bg-red-50"] {
+  background-color: #39252d !important;
+}
+
+html[data-theme="dark"] .admin-panel [class~="border-red-700/20"],
+html[data-theme="dark"] .admin-panel [class~="border-red-800/30"] {
+  border-color: rgba(255, 150, 163, 0.3) !important;
+}
+
+html[data-theme="dark"] .admin-panel [class~="text-red-800"],
+html[data-theme="dark"] .admin-panel [class~="text-red-900"] {
+  color: #ffc4cc !important;
+}
+
+html[data-theme="dark"] .admin-panel [class~="hover:bg-red-50"]:hover {
+  background-color: #39252d !important;
+}
+
+html[data-theme="dark"] .admin-panel [class~="bg-emerald-50"] {
+  background-color: #20372f !important;
+}
+
+html[data-theme="dark"] .admin-panel [class~="border-emerald-800/20"],
+html[data-theme="dark"] .admin-panel [class~="border-emerald-900/20"] {
+  border-color: rgba(112, 220, 172, 0.3) !important;
+}
+
+html[data-theme="dark"] .admin-panel [class~="text-emerald-900"],
+html[data-theme="dark"] .admin-panel [class~="text-emerald-950"],
+html[data-theme="dark"] .admin-panel [class~="text-emerald-700"] {
+  color: #c8f3df !important;
+}
+
+html[data-theme="dark"] [class~="text-[#130e30]"] {
+  color: #f4f1ff !important;
+}
+
+html[data-theme="dark"] [class~="bg-[#ffe228]"][class~="text-[#130e30]"],
+html[data-theme="dark"] [class~="bg-[#f6d91d]"][class~="text-[#130e30]"],
+html[data-theme="dark"] [class*="bg-[#ffe228]/"][class~="text-[#130e30]"] {
+  color: #130e30 !important;
+}
+
+html[data-theme="dark"] [class~="text-[#5f5c6e]"] {
+  color: #c2bed1 !important;
+}
+
+html[data-theme="dark"] [class~="border-[#130e30]"],
+html[data-theme="dark"] [class~="border-[#130e30]/10"],
+html[data-theme="dark"] [class~="border-[#130e30]/15"],
+html[data-theme="dark"] [class~="border-[#130e30]/20"],
+html[data-theme="dark"] [class~="border-[#130e30]/30"] {
+  border-color: rgba(235, 231, 255, 0.2) !important;
+}
+
+html[data-theme="dark"] [class~="hover:bg-[#130e30]/5"]:hover {
+  background-color: rgba(244, 241, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] [class~="hover:bg-white"]:hover {
+  background-color: #373443 !important;
+}
+
+html[data-theme="dark"] [class~="placeholder-[#5f5c6e]"]::placeholder {
+  color: #aaa6b8 !important;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  border-color: rgba(235, 231, 255, 0.24);
+  background: #2b2936;
+  color: #f4f1ff;
+}
+
+html[data-theme="dark"] .theme-image-light {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-image-dark {
+  display: inline-block;
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  background: #373443;
+}
+
+html[data-theme="dark"] .theme-toggle:focus-visible,
+html[data-theme="dark"] *:focus-visible {
+  outline-color: #ffe228;
+}
+
+html[data-theme="dark"] .shader-background {
+  opacity: 0.12;
+  mix-blend-mode: screen;
+}
+
+.shader-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  /* Deixa as cores do shader perceptíveis sem competir com o conteúdo. */
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.shader-background canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shader-background {
+    display: none;
+  }
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-hedvig-letters-serif);
+  letter-spacing: -0.01em;
+}
+
+.font-sans {
+  font-family: var(--font-inter);
+}
+
+/* Foco acessível com a identidade de alto contraste */
+*:focus-visible {
+  outline: 2px solid #130e30;
+  outline-offset: 2px;
+}
+
+/* Suavização de seleção */
+::selection {
+  background-color: #ffe228;
+  color: #130e30;
+}
