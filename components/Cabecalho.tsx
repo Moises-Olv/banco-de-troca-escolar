@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, LogIn, LogOut, Menu, Moon, PlusCircle, Sun, User, X } from "lucide-react";
@@ -36,16 +37,59 @@ export default function Cabecalho() {
     }
   }, []);
 
-  const alternarTema = () => {
+  const alternarTema = (event: React.MouseEvent<HTMLButtonElement>) => {
     const novoTema = tema === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = novoTema;
-    document.documentElement.style.colorScheme = novoTema;
-    try {
-      window.localStorage.setItem("banco-troca-tema", novoTema);
-    } catch {
-      // A escolha vale até a página ser fechada, mesmo sem armazenamento local.
+    const raiz = document.documentElement;
+    const aplicarTema = () => {
+      raiz.dataset.theme = novoTema;
+      raiz.style.colorScheme = novoTema;
+      try {
+        window.localStorage.setItem("banco-troca-tema", novoTema);
+      } catch {
+        // A escolha vale até a página ser fechada, mesmo sem armazenamento local.
+      }
+      setTema(novoTema);
+    };
+
+    const documentoComTransicao = document as Document & {
+      startViewTransition?: (atualizar: () => void) => { finished: Promise<void> };
+    };
+    const movimentoReduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (movimentoReduzido || !documentoComTransicao.startViewTransition) {
+      aplicarTema();
+      return;
     }
-    setTema(novoTema);
+
+    const botao = event.currentTarget.getBoundingClientRect();
+    const origemX = botao.left + botao.width / 2;
+    const origemY = botao.top + botao.height / 2;
+    const raio = Math.ceil(
+      Math.hypot(
+        Math.max(origemX, window.innerWidth - origemX),
+        Math.max(origemY, window.innerHeight - origemY)
+      )
+    );
+
+    raiz.style.setProperty("--theme-origin-x", `${origemX}px`);
+    raiz.style.setProperty("--theme-origin-y", `${origemY}px`);
+    raiz.style.setProperty("--theme-reveal-radius", `${raio}px`);
+
+    const limparOrigem = () => {
+      raiz.style.removeProperty("--theme-origin-x");
+      raiz.style.removeProperty("--theme-origin-y");
+      raiz.style.removeProperty("--theme-reveal-radius");
+    };
+
+    try {
+      const transicao = documentoComTransicao.startViewTransition(() => {
+        flushSync(aplicarTema);
+      });
+      void transicao.finished.then(limparOrigem, limparOrigem);
+    } catch {
+      limparOrigem();
+      aplicarTema();
+    }
   };
 
   const renderBotaoTema = () => (
@@ -57,7 +101,10 @@ export default function Cabecalho() {
       aria-pressed={tema === "dark"}
       title={tema === "light" ? "Ativar modo escuro" : "Ativar modo claro"}
     >
-      {tema === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+      <span className={`theme-toggle-icons ${tema === "dark" ? "is-dark" : "is-light"}`} aria-hidden="true">
+        <Sun className="theme-toggle-sun h-5 w-5" />
+        <Moon className="theme-toggle-moon h-5 w-5" />
+      </span>
     </button>
   );
 
