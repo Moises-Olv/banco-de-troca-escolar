@@ -165,37 +165,37 @@ export default async function PaginaInicial() {
         </div>
       </section>
 
-      {/* Diferencial em relação aos grupos fechados */}
+      {/* Diferencial como complemento às iniciativas e canais existentes */}
       <section aria-labelledby="titulo-diferencial" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="rounded-[28px] border border-[#130e30]/15 bg-[#f9fbf2] p-5 sm:p-8 lg:p-10">
           <div className="mb-7 max-w-3xl sm:mb-9">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#ffe228] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#130e30]">
-              Uma alternativa aos grupos fechados
+              Um complemento aos canais existentes
             </span>
             <h2 id="titulo-diferencial" className="mt-4 font-serif text-2xl font-bold leading-tight text-[#130e30] sm:text-3xl">
-              Doações organizadas, sem se perder no meio da conversa.
+              Um catálogo escolar para localizar doações por escola e série.
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5f5c6e] sm:text-base">
-              Grupos de mensagens continuam sendo úteis para conversar e divulgar. O Banco de Troca complementa esses canais com um espaço público e organizado para localizar materiais e acompanhar cada pedido.
+              Campanhas, pontos de coleta, bibliotecas e grupos ajudam em contextos diferentes. O Banco de Troca Escolar complementa essas iniciativas com um catálogo público dedicado a doações escolares em Porto Velho e um fluxo para acompanhar cada pedido até a confirmação da entrega.
             </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 sm:gap-6">
             <article className="rounded-2xl border border-[#130e30]/10 bg-white p-5 sm:p-6">
-              <h3 className="font-serif text-lg font-bold text-[#130e30]">Em grupos de mensagens</h3>
+              <h3 className="font-serif text-lg font-bold text-[#130e30]">Outros caminhos de doação</h3>
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[#5f5c6e]">
-                <li className="flex gap-2"><span aria-hidden="true">•</span><span>O alcance depende de a pessoa participar do grupo certo.</span></li>
-                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Um anúncio pode ficar para trás conforme novas mensagens chegam.</span></li>
-                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Encontrar por escola, série e categoria depende de como as mensagens foram escritas.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Campanhas e pontos de coleta podem atender ações específicas e locais definidos.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Bibliotecas selecionam doações conforme critérios próprios de acervo e conservação.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Grupos de mensagem e classificados gerais atendem vários assuntos e tipos de anúncio.</span></li>
               </ul>
             </article>
 
             <article className="rounded-2xl border border-[#130e30]/15 bg-[#eff2e5] p-5 sm:p-6">
               <h3 className="font-serif text-lg font-bold text-[#130e30]">No Banco de Troca Escolar</h3>
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[#5f5c6e]">
-                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Visitantes podem consultar o catálogo sem entrar em um grupo.</span></li>
-                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Filtros ajudam a encontrar materiais por escola, série e categoria.</span></li>
-                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Pedido, proposta de data e horário e confirmação da entrega ficam no mesmo fluxo.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Visitantes consultam um catálogo público feito especificamente para materiais escolares.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Filtros estruturados combinam escola, série, categoria e conservação do item.</span></li>
+                <li className="flex gap-2"><span aria-hidden="true">•</span><span>Pedido, proposta de data e horário, confirmação ou cancelamento e código de entrega ficam no mesmo fluxo.</span></li>
               </ul>
               <Link
                 href="/catalogo"

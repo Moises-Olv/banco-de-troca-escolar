@@ -305,13 +305,13 @@ export default function PaginaDetalhesMaterial() {
             </div>
           </div>
 
-          {/* Política de Privacidade e Proteção de Contato (RNF04) */}
+          {/* Orientação sobre contato e local de entrega */}
           <div className="p-5 rounded-[24px] bg-[#f9fbf2] border border-[#130e30]/15 text-xs sm:text-sm text-[#130e30] flex items-start gap-3.5 font-sans">
             <ShieldCheck className="w-5 h-5 text-[#130e30] flex-shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <p className="font-bold text-[#130e30]">Proteção de Privacidade Ativa</p>
+              <p className="font-bold text-[#130e30]">Combine a entrega com cuidado</p>
               <p className="leading-relaxed text-[#5f5c6e]">
-                Para a segurança de famílias e alunos, nenhum contato telefônico, e-mail pessoal ou endereço de moradia é divulgado publicamente. Combine a entrega na escola indicada no anúncio e respeite as regras de acesso da unidade.
+                O anúncio não tem campos próprios de telefone, e-mail ou endereço residencial. Como a descrição e as fotos são públicas, não inclua esses dados nelas. Combine a entrega na escola indicada e respeite as regras de acesso da unidade.
               </p>
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 # Banco de Troca Escolar
 
-Aplicação web comunitária para aproximar estudantes, responsáveis e famílias que querem **doar ou receber materiais escolares gratuitamente**. O site organiza anúncios por escola e série e acompanha o pedido até a confirmação da entrega.
+Aplicação web comunitária para aproximar estudantes, responsáveis e famílias que querem **doar ou receber materiais escolares gratuitamente**. O catálogo organiza anúncios por escola, série, categoria e conservação; o fluxo registra pedidos, combinação de entrega e confirmação do recebimento.
 
 ## Prévia das telas
 
@@ -56,6 +56,14 @@ As imagens abaixo mostram as principais áreas da aplicação. Clique em uma ima
 - **Administração:** painel restrito a administradores com métricas, moderação de relatos e denúncias, retirada de anúncios e convites de uso único para outros administradores. Convites expiram em sete dias e só podem ser aceitos pela conta de e-mail confirmada correspondente.
 - **Páginas informativas:** Sobre, Política de Privacidade e Termos de Uso.
 - **Interface:** tema claro/escuro, layout responsivo, animação de fundo, foco de teclado e link para pular ao conteúdo principal.
+
+## Contexto e diferencial
+
+O projeto foi pensado para complementar formas de doação que já existem. Em 2024, a Prefeitura de Porto Velho publicou uma campanha de arrecadação de materiais escolares com pontos físicos de coleta; a Biblioteca Municipal Francisco Meirelles recebe livros conforme critérios de conservação e acervo; e classificados gerais, como a OLX, atendem muitas categorias e permitem anunciar doações ou trocas. Essas iniciativas têm seus próprios objetivos e regras — o Banco de Troca Escolar não as substitui nem afirma ter parceria com elas.
+
+O diferencial implementado é concentrar anúncios **somente de materiais escolares**, com campos e filtros estruturados para escola, série, categoria e conservação. A lista de escolas disponível no formulário é voltada a Porto Velho. A busca não possui filtro por bairro, mapa nem localização residencial. Depois de solicitar um item, as contas acompanham a proposta de data e horário, a confirmação ou o cancelamento e o registro da entrega por código.
+
+Referências públicas usadas como contexto: [campanha da Prefeitura de Porto Velho (2024)](https://www.portovelho.ro.gov.br/artigo/45345/), [critérios de doação da Biblioteca Municipal Francisco Meirelles](https://sites.google.com/view/bibliotecafranciscomeirelles/servi%C3%A7os/doa%C3%A7%C3%B5es) e [orientações gerais para publicar na OLX](https://ajuda.olx.com.br/s/article/como-publicar-anuncio).
 
 ## Tecnologias
 
@@ -181,6 +189,8 @@ A especificação detalhada do comportamento atual está em [`docs/spec-moises-2
 
 - O acesso a anúncios, pedidos, perfis, relatos e funções administrativas é limitado por políticas RLS e funções no Postgres; permissões devem ser revistas no Supabase de cada implantação.
 - Dados de autenticação ficam no Supabase Auth. A aplicação não deve expor senhas, códigos de confirmação, chaves privadas ou dados não necessários do perfil.
+- O formulário do anúncio não tem campos próprios para telefone, e-mail ou endereço residencial, mas descrição e fotos são públicas e podem conter dados inseridos pela pessoa. O nome de exibição e a mensagem da solicitação são mostrados à pessoa doadora na área autenticada Minha Atividade; portanto, os pedidos não são anônimos entre as contas participantes. Não inclua dados de contato em anúncios ou mensagens.
+- Os filtros são por escola, série, categoria e conservação. A lista atual de escolas é voltada a Porto Velho; não há filtro por bairro ou mapa.
 - Fotos públicas podem ser vistas por visitantes enquanto disponíveis. O upload e a remoção são limitados pela pasta do usuário.
 - O site organiza anúncios e pedidos, mas não inspeciona fisicamente materiais nem garante que a pessoa compareça ao encontro.
 - A política publicada no site não substitui a revisão dos contratos com fornecedores nem uma análise jurídica da operação.

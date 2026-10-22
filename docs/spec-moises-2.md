@@ -33,7 +33,7 @@ As páginas autenticadas exigem sessão. A autorização efetiva para dados e a�
 ### 3.2 Encontrar materiais
 
 - A página inicial consulta materiais disponíveis e ativos, apresenta até quatro destaques recentes em carrossel, indicadores comunitários e etapas do funcionamento.
-- O catálogo pesquisa texto no título, descrição e escola; filtra por escola, série, categoria e estado de conservação; ordena por data recente ou ordem alfabética.
+- O catálogo pesquisa texto no título, descrição e escola; filtra por escola, série, categoria e estado de conservação; ordena por data recente ou ordem alfabética. A lista atual de escolas é voltada a Porto Velho; não há filtro por bairro, mapa ou geolocalização.
 - O detalhe público apresenta informações do material e dados do perfil selecionados para exibição pública.
 - Categorias disponíveis: Livro, Uniforme e Outro material. Conservação: Novo, Bom estado e Usado.
 - Anúncios pausados, reservados, concluídos, ocultados ou inativos não são exibidos como disponíveis no catálogo.
@@ -55,6 +55,8 @@ As páginas autenticadas exigem sessão. A autorização efetiva para dados e a�
 4. A pessoa solicitante confirma a data proposta ou cancela a reserva. O cancelamento encerra o pedido e pode colocar o anúncio novamente disponível, conforme as validações do banco.
 5. Depois da confirmação da data, o fluxo apresenta o código de entrega ao doador. As funções do banco limitam tentativas para proteger essa confirmação.
 6. A entrega é registrada como concluída mediante confirmação do código e a atividade mostra o estado resultante.
+
+O pedido registra o nome de exibição informado pela conta e mostra esse nome e a mensagem à pessoa doadora em Minha Atividade. O formulário de anúncio não tem campos próprios de telefone, e-mail ou endereço residencial, mas a descrição livre e as fotos são públicas e podem conter informações inseridas pela pessoa. O pedido não é anônimo entre as contas participantes.
 
 As operações principais são realizadas pelas RPCs do banco para validar participantes, propriedade, status e concorrência. O código de entrega fica em tabela privada, não acessível por consulta direta normal.
 
@@ -84,6 +86,13 @@ As operações principais são realizadas pelas RPCs do banco para validar parti
 - Administradores revisam relatos e denúncias e mudam seus estados.
 - Podem retirar anúncio do catálogo por meio de função administrativa. A retirada marca o anúncio como inativo/indisponível e preserva o registro e os pedidos existentes. Uma reserva em andamento precisa ser encerrada antes da retirada.
 - O primeiro administrador é inicializado por SQL, não por autoinscrição pública. A instalação de outra instância requer adaptar o e-mail de bootstrap no script de administração para o próprio titular antes da execução.
+
+### 3.9 Contexto e diferencial do produto
+
+- O produto complementa campanhas, pontos de coleta, bibliotecas e canais de classificados ou mensagens; não substitui essas iniciativas e não declara parceria com elas.
+- O diferencial verificado no código é o foco exclusivo em doações de materiais escolares, com catálogo pesquisável e filtros estruturados por escola, série, categoria e conservação, associado a pedidos e acompanhamento da entrega.
+- A abrangência atual é baseada na lista de escolas de Porto Velho em `data/materiais.ts`. Embora isso dê uma referência escolar local, não existe busca por bairro, mapa ou proximidade residencial.
+- Exemplos públicos de iniciativas que contextualizam o problema: [campanha de arrecadação da Prefeitura de Porto Velho em 2024](https://www.portovelho.ro.gov.br/artigo/45345/), [regras de doação da Biblioteca Municipal Francisco Meirelles](https://sites.google.com/view/bibliotecafranciscomeirelles/servi%C3%A7os/doa%C3%A7%C3%B5es) e [publicação de anúncios gerais na OLX](https://ajuda.olx.com.br/s/article/como-publicar-anuncio). Os exemplos não constituem parceria com o projeto.
 
 ## 4. Mapa de rotas
 
@@ -161,6 +170,8 @@ Consulte [`README.md`](../README.md) para requisitos, variáveis de ambiente, ex
 - Os textos legais disponíveis são páginas do produto, não substituem revisão jurídica profissional.
 - O repositório não contém arquivo `LICENSE`; sua visibilidade pública não define, por si só, direitos de reutilização.
 - A configuração de um projeto de terceiros exige configurar seu próprio Supabase, URLs de autenticação, e-mail, esquema base e primeiro administrador.
+- O site não garante anonimato entre doador e solicitante: o nome de exibição do solicitante aparece no pedido recebido pelo doador.
+- Os filtros locais usam escola como referência; não há filtro por bairro, mapa ou raio de distância.
 
 ## 10. Fonte desta especificação
 

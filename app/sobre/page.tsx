@@ -1,9 +1,11 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  BookOpen,
   CalendarDays,
   CheckCircle2,
   LockKeyhole,
+  MapPin,
   School,
 } from "lucide-react";
 import FormularioRelato from "@/components/FormularioRelato";
@@ -87,6 +89,66 @@ export default function PaginaSobre() {
         </article>
       </section>
 
+      <section aria-labelledby="diferencial-titulo" className="space-y-6">
+        <div className="mx-auto max-w-3xl space-y-3 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#ffe228] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#130e30]">
+            <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+            Contexto local e diferencial
+          </span>
+          <h2 id="diferencial-titulo" className="font-serif text-3xl font-bold text-[#130e30]">
+            Uma ferramenta complementar para encontrar doações escolares.
+          </h2>
+          <p className="text-sm leading-relaxed text-[#5f5c6e] sm:text-base">
+            Porto Velho já conta com campanhas, pontos de coleta e iniciativas de bibliotecas. O Banco de Troca Escolar foi pensado para complementar esses caminhos com um catálogo digital dedicado a materiais escolares, organizado por escola, série, categoria e conservação.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <article className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6">
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#ffe228] text-[#130e30]">
+              <MapPin className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <h3 className="font-serif text-xl font-bold text-[#130e30]">Campanhas e pontos de coleta</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#5f5c6e]">
+              Uma campanha da Prefeitura de Porto Velho em 2024 reuniu materiais escolares para envio ao Rio Grande do Sul e indicou pontos físicos de coleta. O site complementa ações desse tipo com anúncios individuais consultáveis no catálogo.
+            </p>
+            <a href="https://www.portovelho.ro.gov.br/artigo/45345/" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
+              Ver notícia da Prefeitura <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </article>
+
+          <article className="rounded-3xl border border-[#130e30]/15 bg-[#f9fbf2] p-6">
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#eff2e5] text-[#130e30]">
+              <BookOpen className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <h3 className="font-serif text-xl font-bold text-[#130e30]">Bibliotecas e iniciativas locais</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#5f5c6e]">
+              A Biblioteca Municipal Francisco Meirelles recebe livros conforme critérios de conservação e interesse do acervo, e informa que não aceita livros didáticos. O Banco de Troca Escolar contempla também uniformes e outros materiais cadastrados no sistema.
+            </p>
+            <a href="https://sites.google.com/view/bibliotecafranciscomeirelles/servi%C3%A7os/doa%C3%A7%C3%B5es" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
+              Ver critérios da biblioteca <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </article>
+
+          <article className="rounded-3xl border border-[#130e30]/15 bg-[#eff2e5] p-6">
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#130e30]">
+              <School className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <h3 className="font-serif text-xl font-bold text-[#130e30]">Um catálogo escolar especializado</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#5f5c6e]">
+              Em vez de um classificado para qualquer produto, o foco aqui é material escolar doado gratuitamente. A busca permite combinar escola, série, categoria e conservação; os pedidos também acompanham a proposta de entrega e a confirmação por código.
+            </p>
+            <a href="https://ajuda.olx.com.br/s/article/como-publicar-anuncio" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#130e30] underline underline-offset-4">
+              Ver como funcionam anúncios gerais na OLX <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </article>
+        </div>
+
+        <p className="mx-auto max-w-3xl text-center text-xs leading-relaxed text-[#5f5c6e]">
+          O catálogo atual usa uma lista de escolas de Porto Velho. É possível filtrar por escola, mas ainda não há filtro por bairro ou mapa. As referências externas são exemplos de iniciativas e serviços, não parcerias ou endossos ao projeto.
+        </p>
+      </section>
+
       <section aria-labelledby="fluxo-titulo" className="space-y-6">
         <div className="mx-auto max-w-2xl space-y-2 text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5f5c6e]">
@@ -122,6 +184,16 @@ export default function PaginaSobre() {
           </p>
         </div>
         <CheckCircle2 className="mt-1 hidden h-5 w-5 flex-shrink-0 text-emerald-700 sm:block" aria-hidden="true" />
+      </section>
+
+      <section aria-labelledby="privacidade-pedidos-titulo" className="mx-auto flex max-w-3xl gap-4 rounded-3xl border border-[#130e30]/15 bg-white p-5 sm:p-7">
+        <LockKeyhole className="mt-1 h-5 w-5 flex-shrink-0 text-[#130e30]" aria-hidden="true" />
+        <div className="space-y-2">
+          <h2 id="privacidade-pedidos-titulo" className="font-serif text-xl font-bold text-[#130e30]">O que fica visível em um pedido</h2>
+          <p className="text-sm leading-relaxed text-[#5f5c6e]">
+            O formulário do anúncio não pede telefone, e-mail ou endereço residencial, mas descrição e fotos são públicas; não coloque esses dados nelas. Quando alguém solicita um material, o nome de exibição e a mensagem ficam visíveis para a pessoa doadora em Minha Atividade. Portanto, o pedido não é anônimo entre as duas contas. Evite incluir contatos ou dados pessoais na mensagem.
+          </p>
+        </div>
       </section>
 
       <section id="reportar-problema" aria-labelledby="reportar-titulo" className="scroll-mt-24">
