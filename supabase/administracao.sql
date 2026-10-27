@@ -1,6 +1,7 @@
 -- Administração segura: papéis, convites, moderação e métricas.
 -- Execute no Supabase: SQL Editor > New query > cole este arquivo completo > Run.
--- O primeiro administrador é a conta proprietária informada para este projeto.
+-- Cadastre a primeira conta administradora separadamente após confirmar o e-mail.
+-- Siga database/bootstrap-admin.sql depois de criar uma conta.
 begin;
 
 alter table public.materiais
@@ -77,33 +78,6 @@ create policy materiais_moderacao_delete_guard
   on public.materiais as restrictive
   for delete to authenticated
   using (not removido_por_moderacao or (select public.admin_eh_usuario()));
-
--- Bootstrap do primeiro administrador. Confira este e-mail antes de executar.
-do $$
-declare
-  v_usuario_id uuid;
-  -- Substitua o marcador pelo e-mail confirmado do administrador desta instalação.
-  v_email_admin text := 'SUBSTITUA_PELO_EMAIL_CONFIRMADO_DO_ADMIN';
-begin
-  if v_email_admin = 'SUBSTITUA_PELO_EMAIL_CONFIRMADO_DO_ADMIN' then
-    raise exception 'Antes de executar, substitua v_email_admin pelo e-mail confirmado do primeiro administrador desta instalação.';
-  end if;
-
-  select u.id into v_usuario_id
-  from auth.users u
-  where lower(u.email) = lower(v_email_admin)
-  order by u.created_at
-  limit 1;
-
-  if v_usuario_id is null then
-    raise exception 'Conta inicial não encontrada. Confira o e-mail em auth.users e substitua-o neste arquivo antes de executar.';
-  end if;
-
-  insert into private.administradores (usuario_id)
-  values (v_usuario_id)
-  on conflict (usuario_id) do nothing;
-end;
-$$;
 
 -- Apenas administradores consultam relatos e alteram seu status.
 grant select on public.relatos_erros to authenticated;

@@ -4,6 +4,8 @@
 
 Aplicação web comunitária para aproximar estudantes, responsáveis e famílias que querem **doar ou receber materiais escolares gratuitamente**. O catálogo organiza anúncios por escola, série, categoria e conservação; o fluxo registra pedidos, combinação de entrega e confirmação do recebimento.
 
+**Sistema publicado:** [banco-de-troca-escolar.vercel.app](https://banco-de-troca-escolar.vercel.app/) · **Histórico do repositório:** [GitHub](https://github.com/Moises-Olv/banco-de-troca-escolar/commits/main/)
+
 ## Prévia das telas
 
 As imagens abaixo mostram as principais áreas da aplicação. Clique em uma imagem para abri-la em tamanho completo.
@@ -55,7 +57,7 @@ As imagens abaixo mostram as principais áreas da aplicação. Clique em uma ima
 - **Relatos e privacidade:** formulário para problemas técnicos, erros de conteúdo, acessibilidade, sugestões e solicitações de dados pessoais. Solicitações de privacidade são analisadas manualmente; o formulário não apaga dados automaticamente.
 - **Administração:** painel restrito a administradores com métricas, moderação de relatos e denúncias, retirada de anúncios e convites de uso único para outros administradores. Convites expiram em sete dias e só podem ser aceitos pela conta de e-mail confirmada correspondente.
 - **Páginas informativas:** Sobre, Política de Privacidade e Termos de Uso.
-- **Interface:** tema claro/escuro, layout responsivo, fundo animado, entradas suaves ao rolar, microinterações nos cards e respeito à preferência de movimento reduzido do dispositivo; também oferece foco de teclado e link para pular ao conteúdo principal.
+- **Interface:** tema claro/escuro com transição circular de amanhecer/anoitecer, layout responsivo, fundo animado, entradas suaves ao rolar, microinterações nos cards e respeito à preferência de movimento reduzido do dispositivo; também oferece foco de teclado e link para pular ao conteúdo principal.
 
 ## Contexto e diferencial
 
@@ -82,8 +84,9 @@ Referências públicas usadas como contexto: [campanha da Prefeitura de Porto Ve
 
 ## Requisitos
 
-- Node.js LTS compatível com Next.js 15 e npm.
+- Node.js **24.20.0** (versão testada e indicada em `.nvmrc`) e npm 11.x. Esta instância foi compilada em Windows 10 Home com npm 11.19.0.
 - Uma conta e um projeto Supabase próprios para autenticação, banco e arquivos.
+- PostgreSQL 15 ou posterior no Supabase. A versão exata do serviço é controlada pelo Supabase e pode variar por projeto; consulte-a com `select version();` no SQL Editor.
 - As credenciais públicas do projeto Supabase: URL e chave `publishable` (em projetos antigos, pode aparecer como `anon key`).
 
 ## Executar localmente
@@ -91,19 +94,18 @@ Referências públicas usadas como contexto: [campanha da Prefeitura de Porto Ve
 ```bash
 git clone https://github.com/Moises-Olv/banco-de-troca-escolar.git
 cd banco-de-troca-escolar
-npm install
+npm ci
 ```
 
-Crie `.env.local` na raiz (não envie esse arquivo ao Git):
+`npm ci` instala as versões registradas em `package-lock.json`. Crie `.env.local` a partir do modelo e preencha-o com os dados de um projeto Supabase que você controla:
 
 ```dotenv
-NEXT_PUBLIC_SUPABASE_URL=https://SEU-PROJETO.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sua_chave_publishable
+cp .env.example .env.local
 ```
 
-No painel Supabase, configure a autenticação e as URLs de retorno para o ambiente local e para o domínio da sua implantação. A rota de callback usada pela aplicação é `/auth/callback`. Configure também os modelos e o envio de e-mail de confirmação e redefinição de senha.
+No PowerShell, use `Copy-Item .env.example .env.local`. `.env.local` é ignorado pelo Git. Configure a autenticação no Supabase conforme a seção seguinte.
 
-Depois, inicie o servidor de desenvolvimento:
+Depois que o banco e as URLs de autenticação estiverem prontos, inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
@@ -118,23 +120,32 @@ npm run start
 
 ## Configurar seu próprio Supabase
 
-O código cliente necessita apenas da URL e da chave `publishable`. **Nunca** coloque uma `service_role`, chave secreta, senha de banco ou token em variável `NEXT_PUBLIC_*`, no código do navegador ou em commits. A chave publishable não substitui as políticas RLS.
+O projeto Supabase fornece o PostgreSQL gerenciado e o banco padrão `postgres`; não é necessário criar um servidor PostgreSQL separado. O banco requerido é PostgreSQL 15 ou posterior. Para consultar a versão exata do seu projeto, rode `select version();` no SQL Editor.
 
-Os scripts em [`supabase/`](supabase/) são migrações complementares do banco e foram escritos para a estrutura usada pela aplicação. Podem ser executados no **Supabase Dashboard → SQL Editor**, em projeto de desenvolvimento próprio. Leia cada arquivo antes de executar e use esta sequência para uma instalação que ainda não tenha as tabelas auxiliares:
+O código usa a URL e a chave `publishable` configuradas em `.env.local`. **Nunca** coloque `service_role`, chaves secretas, senha de banco ou tokens em variável `NEXT_PUBLIC_*`, no código do navegador ou em commits. A chave publishable não substitui as políticas RLS.
 
-1. Prepare primeiro as tabelas base `public.materiais` e `auth.users` compatíveis com os campos consultados pela aplicação. **O repositório atual não contém uma migração inicial completa para `public.materiais`**; `atividade.sql` cria `pedidos_interesse`, mas depende da tabela de materiais preexistente. Portanto, um clone limpo ainda precisa obter/criar esse esquema base antes de seguir. Não execute scripts contra uma base de produção sem backup e revisão.
-2. Execute `supabase/perfis-publicos.sql` para perfis, fotos de perfil e estatísticas públicas.
-3. Execute `supabase/atividade.sql` para pedidos, índices e regras de acesso aos anúncios e pedidos.
-4. Execute `supabase/apenas-doacao.sql` para manter a modalidade do sistema como doação.
-5. Execute `supabase/fluxo-pedidos-reserva.sql` e, em seguida, `supabase/fluxo-data-entrega.sql` para reserva, proposta/aceitação da data, cancelamento e confirmação com código.
-6. Execute `supabase/fotos-materiais.sql` para o bucket e as políticas de fotos dos materiais.
-7. Execute `supabase/relatos-erros.sql` e depois `supabase/privacidade-lgpd.sql` para relatos e solicitações de privacidade.
-8. Execute `supabase/administracao.sql` para administração, convites, denúncias e moderação. **Antes**, edite `v_email_admin` no bloco de bootstrap e substitua `SUBSTITUA_PELO_EMAIL_CONFIRMADO_DO_ADMIN` pelo e-mail confirmado da sua própria conta. O script interrompe a execução enquanto o marcador não for alterado. Nunca publique dados pessoais de outra pessoa ao adaptar o arquivo.
-9. Execute `supabase/notificacoes.sql` para notificações de pedidos.
-10. Execute `supabase/moderacao-anuncios.sql` e `supabase/seguranca-acesso-funcoes.sql` para as regras complementares de moderação e permissões das funções.
-11. Execute `supabase/indices-desempenho.sql` por último para índices e a view otimizada do catálogo.
+Em um **projeto Supabase novo**, abra **Dashboard → SQL Editor → New query** e execute cada arquivo abaixo individualmente, nesta ordem. Aguarde sucesso antes de prosseguir:
 
-Alguns scripts podem ser aplicados em bases existentes e podem conter transformações de dados. Leia o SQL e confirme os pré-requisitos do próprio arquivo antes de rodar. O resultado não é uma migração universal de um clique. As verificações de segurança dependem de RLS e das funções do banco; esconder botões na interface não é controle de acesso.
+1. [`database/schema.sql`](database/schema.sql) — tabela base `public.materiais`, campos, chave estrangeira, índices e leitura RLS.
+2. `supabase/perfis-publicos.sql` — perfis, fotos de perfil e estatísticas públicas.
+3. `supabase/atividade.sql` — pedidos, índices e políticas de anúncios/pedidos.
+4. `supabase/apenas-doacao.sql` — regra de doações gratuitas.
+5. `supabase/fluxo-pedidos-reserva.sql` — reserva e código de entrega.
+6. `supabase/fluxo-data-entrega.sql` — proposta/confirmação de data, cancelamento e conclusão.
+7. `supabase/fotos-materiais.sql` — bucket e políticas das fotos de anúncios.
+8. `supabase/relatos-erros.sql` — formulário público de relatos.
+9. `supabase/privacidade-lgpd.sql` — tipos de solicitação de privacidade.
+10. `supabase/administracao.sql` — administração, convites, denúncias e moderação.
+11. `supabase/notificacoes.sql` — notificações dos pedidos.
+12. `supabase/moderacao-anuncios.sql` — regras de moderação dos anúncios.
+13. `supabase/seguranca-acesso-funcoes.sql` — permissões explícitas das funções.
+14. `supabase/indices-desempenho.sql` — índices e view otimizada do catálogo.
+
+Depois, configure **Authentication → URL Configuration** com Site URL `http://localhost:3000` e Redirect URL `http://localhost:3000/auth/callback`. Configure o envio de e-mails de confirmação e redefinição de senha.
+
+Crie a primeira conta pelo formulário do site e confirme o e-mail. Para conceder administração a essa conta, cole `database/bootstrap-admin.sql` no SQL Editor, substitua o marcador ali pelo e-mail confirmado da sua conta e execute. Não salve nem envie ao GitHub uma cópia que contenha o e-mail pessoal. Esse passo é separado do esquema para que o SQL inicial rode antes de haver uma conta. O próprio sistema não inclui contas nem anúncios fictícios.
+
+Essa sequência é voltada a um projeto Supabase novo. Não a execute em produção sem backup e revisão. As policies RLS e funções do banco são a autorização efetiva; esconder controles na interface não protege dados.
 
 ### Storage
 
@@ -171,6 +182,8 @@ Não copie as credenciais Supabase de outra instalação. Cada instância deve u
 | `/admin` | Administrador | Métricas, moderação e convites administrativos |
 | `/admin/aceitar` | Conta autenticada com convite | Aceite de convite administrativo |
 
+O roteiro de verificação do fluxo principal está em [`docs/roteiro-de-teste.md`](docs/roteiro-de-teste.md). O checklist de segurança para a revisão antes da entrega está em [`docs/checklist-seguranca.md`](docs/checklist-seguranca.md).
+
 ## Estrutura do repositório
 
 ```text
@@ -180,10 +193,11 @@ data/         tipos e opções apresentadas nos formulários
 lib/          integração Supabase e funções compartilhadas
 public/       imagens, logos, ícones e outros arquivos públicos
 supabase/     scripts SQL complementares do banco
+database/    esquema inicial e bootstrap do primeiro administrador
 docs/         especificação, referência inicial e organização de assets
 ```
 
-A especificação detalhada do comportamento atual está em [`docs/spec-moises-2.md`](docs/spec-moises-2.md). [`docs/spec-inicial.md`](docs/spec-inicial.md) é a proposta antiga, mantida como referência histórica; ela não descreve o sistema atual. A organização dos arquivos em `public/` está documentada em [`docs/assets-publicos.md`](docs/assets-publicos.md).
+A especificação final atualizada está em [`spec.md`](spec.md). [`docs/spec-moises-2.md`](docs/spec-moises-2.md) aponta para essa versão; [`docs/spec-inicial.md`](docs/spec-inicial.md) é a proposta antiga mantida como referência histórica. A organização dos arquivos em `public/` está documentada em [`docs/assets-publicos.md`](docs/assets-publicos.md).
 
 ## Privacidade, segurança e limites
 
@@ -198,7 +212,7 @@ A especificação detalhada do comportamento atual está em [`docs/spec-moises-2
 
 ## Estado e contribuições
 
-O projeto usa npm e mantém `package-lock.json`. Para propor mudanças, crie uma branch, faça alterações pequenas e descreva como foram verificadas. Não envie `.env.local`, credenciais, dados de usuários ou fotos pessoais.
+O projeto usa npm e mantém `package-lock.json`. As decisões e correções registradas durante a revisão estão em [`CHANGELOG.md`](CHANGELOG.md); a confirmação de leitura do responsável fica pendente até uma pessoa revisar e preencher a seção de validação humana ali. Para propor mudanças, crie uma branch, faça alterações pequenas e descreva como foram verificadas. Não envie `.env.local`, credenciais, dados de usuários ou fotos pessoais.
 
 ## Licença
 
