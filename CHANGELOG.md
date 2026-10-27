@@ -19,15 +19,18 @@ Este arquivo registra alterações de preparação da entrega e decisões tomada
 - Não incluir chave privada ou e-mail de administrador em arquivos versionados; o primeiro administrador é configurado localmente depois do cadastro.
 - Não afirmar que o banco hospedado foi migrado, que as variáveis da Vercel estão corretas ou que o Anexo B foi aprovado; essas verificações dependem dos painéis e do documento do curso.
 - Identificado que a lista pública de commits não demonstra claramente o histórico do desenvolvimento desde seu início; esta atualização não reescreve nem inventa histórico anterior.
-- Consultado o GitHub autenticado: já havia convite pendente para `rafaelpitwak`, então não foi enviado convite duplicado. O painel do responsável deve confirmar o estado final após o professor aceitar.
+- O responsável confirmou nesta conversa que o professor `rafaelpitwak` já foi adicionado como colaborador. O estado do convite não foi consultado novamente por API nesta revisão.
+- O histórico ativo do GitHub tem seis commits, começando em `Initial public release` (22/10/2026), e não comprova o histórico completo desde o início do desenvolvimento. Foram encontrados também 23 commits antigos como objetos Git locais não referenciados; eles não foram republicados porque existe uma pendência anterior de cache/remoção no GitHub e não se deve reintroduzir histórico antigo sem auditoria de credenciais.
 
 ### Verificações realizadas
 
 - Compilação de produção `npm run build` concluída com sucesso no checkout em Windows 10 Home, Node.js 24.20.0 e npm 11.19.0.
 - `.env.local` está coberto por `.gitignore`; somente `.env.example` é permitido no repositório.
-- Busca estática de padrões comuns de chaves Supabase secret, tokens GitHub, chave privada, chave AWS e URL de banco com senha nos cinco commits existentes não encontrou correspondências; essa busca não prova que todo tipo de segredo esteja ausente.
+- Busca estática de padrões de alta confiança (tokens Supabase/GitHub, chave privada, chave AWS, JWT e URL de banco com senha) nos 29 commits alcançáveis ou ainda presentes como objetos locais não referenciados não encontrou correspondências. A busca não prova que todo formato de segredo esteja ausente nem substitui a auditoria do histórico no GitHub.
+- Foi feito um clone limpo do commit de entrega em diretório temporário. `npm ci` instalou as dependências e reportou zero vulnerabilidades; `npm run build` concluiu com sucesso usando valores Supabase fictícios. Isso valida instalação e compilação, não conexão nem migração do banco.
 - A URL publicada respondeu HTTP 200 durante a conferência anterior. Isso não equivale a testar todo o fluxo autenticado.
-- Não foi executado SQL no projeto Supabase hospedado nesta revisão.
+- Não foi executado SQL no projeto Supabase hospedado nesta revisão. A versão exata do PostgreSQL, o resultado atual do Security Advisor e a comparação com o Anexo B continuam dependendo do painel e do material do curso.
+- A pessoa responsável confirmou que o professor foi adicionado como colaborador. A pessoa ainda precisa preencher a declaração de revisão humana abaixo após conferir o resultado e o sistema.
 
 ### Confirmação humana exigida pela atividade
 

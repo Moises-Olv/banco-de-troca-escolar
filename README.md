@@ -124,7 +124,7 @@ O projeto Supabase fornece o PostgreSQL gerenciado e o banco padrão `postgres`;
 
 O código usa a URL e a chave `publishable` configuradas em `.env.local`. **Nunca** coloque `service_role`, chaves secretas, senha de banco ou tokens em variável `NEXT_PUBLIC_*`, no código do navegador ou em commits. A chave publishable não substitui as políticas RLS.
 
-Em um **projeto Supabase novo**, abra **Dashboard → SQL Editor → New query** e execute cada arquivo abaixo individualmente, nesta ordem. Aguarde sucesso antes de prosseguir:
+Em um **projeto Supabase novo**, abra **Dashboard → SQL Editor → New query** e execute cada arquivo abaixo individualmente, nesta ordem. Ao todo são 14 arquivos: um esquema-base e 13 scripts complementares. Aguarde sucesso antes de prosseguir:
 
 1. [`database/schema.sql`](database/schema.sql) — tabela base `public.materiais`, campos, chave estrangeira, índices e leitura RLS.
 2. `supabase/perfis-publicos.sql` — perfis, fotos de perfil e estatísticas públicas.

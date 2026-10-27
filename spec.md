@@ -180,7 +180,7 @@ Restrições centrais incluem: apenas o dono gerencia seu anúncio; só os parti
 
 ### 8.2 Banco, tabelas e dados iniciais
 
-No Supabase, cada projeto inclui um banco gerenciado chamado `postgres`; não crie um banco separado. O arquivo [`database/schema.sql`](database/schema.sql) cria a tabela-base `public.materiais`, os campos usados pela aplicação, a chave estrangeira para `auth.users`, os índices, a política pública de leitura e os privilégios mínimos.
+No Supabase, cada projeto inclui um banco gerenciado chamado `postgres`; não crie um banco separado. A instalação usa **14 arquivos SQL ao todo**: [`database/schema.sql`](database/schema.sql) cria a tabela-base `public.materiais`, os campos usados pela aplicação, a chave estrangeira para `auth.users`, os índices, a política pública de leitura e os privilégios mínimos; os outros 13 arquivos são complementares.
 
 Em seguida, aplique os scripts complementares na ordem numerada da seção 8.4. Eles criam pedidos, perfis, notificações, relatos, denúncias, funções, políticas RLS, buckets de fotos e a view do catálogo. As tabelas e relações estão listadas na seção 5. `auth.users` é fornecida pelo Supabase Auth.
 
@@ -281,4 +281,4 @@ O sistema publicado desta instância está em [banco-de-troca-escolar.vercel.app
 - A versão exata do PostgreSQL, a entrega de e-mails, as políticas ativas do projeto Supabase e as variáveis configuradas na Vercel são propriedades da instalação; verifique-as nos respectivos painéis. Esta especificação informa o requisito mínimo e como consultar a versão, sem alegar acesso às configurações privadas.
 - Não foi incluído um login/senha de teste. Crie as contas fictícias conforme o roteiro e use e-mails de teste controlados por quem avalia.
 - A Spec e os scripts descrevem o código neste repositório; quando a implementação mudar, atualize esta especificação e o changelog.
-- Antes de entregar, confira o convite `rafaelpitwak` em GitHub → Settings → Collaborators e percorra o checklist da atividade, inclusive o Anexo B de segurança fornecido pelo curso.
+- O responsável confirmou que `rafaelpitwak` foi adicionado como colaborador. Ainda é necessário percorrer o checklist da atividade, inclusive o Anexo B de segurança fornecido pelo curso.

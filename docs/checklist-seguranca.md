@@ -5,7 +5,7 @@ Use junto ao Anexo B da apostila. O anexo não está versionado neste repositór
 ## Evidências verificáveis no repositório
 
 - [x] `.env.local` é ignorado pelo Git e `.env.example` contém apenas valores fictícios para as variáveis públicas necessárias.
-- [x] Revisão estática de padrões comuns de tokens, chaves privadas e URLs de banco autenticadas nos cinco commits existentes não encontrou correspondências. Isso não substitui a verificação de todas as credenciais no painel nem garante detecção de qualquer formato secreto.
+- [x] Revisão estática de padrões de alta confiança (tokens Supabase/GitHub, chave privada, chave AWS, JWT e URLs de banco com senha) nos 29 commits que ainda existem localmente não encontrou correspondências. Isso não substitui a verificação de credenciais no painel nem detecta todo formato de segredo.
 - [x] A aplicação usa Supabase Auth para autenticação; não mantém uma tabela própria de senhas.
 - [x] Os scripts SQL configuram RLS, políticas de Storage, privilégios de funções e validações de propriedade/participante.
 - [x] Upload de imagens limitado a JPEG, PNG ou WebP e 5 MB, com políticas para pastas por usuário.
@@ -15,7 +15,9 @@ Use junto ao Anexo B da apostila. O anexo não está versionado neste repositór
 
 ## Conferências que o responsável precisa fazer no serviço
 
-- [ ] Conferir o Security Advisor do projeto Supabase atual e resolver ou documentar cada alerta e aviso.
+Na captura do Security Advisor compartilhada durante a revisão, o painel mostrava **0 erros, 19 avisos e 3 sugestões informativas**. Portanto, “zero vulnerabilidades” do relatório de dependências do GitHub não significa que o Security Advisor do Supabase esteja sem avisos. Reabra o advisor e confira cada aviso atual; alguns avisos de `SECURITY DEFINER` podem corresponder a RPCs intencionais do fluxo do site, mas cada função e permissão precisa ser validada contra os scripts e a necessidade real.
+
+- [ ] Conferir o Security Advisor do projeto Supabase atual; comparar os avisos de `SECURITY DEFINER` com `supabase/seguranca-acesso-funcoes.sql`, testar a chamada como `anon` e `authenticated`, e resolver ou documentar individualmente cada aviso.
 - [ ] Confirmar RLS habilitado nas tabelas públicas e testar com visitante, conta comum, doador, solicitante e administrador.
 - [ ] Conferir que nenhuma chave `service_role` ou secret está nas variáveis `NEXT_PUBLIC_*`, nos logs ou no histórico GitHub; rotacionar credencial se alguma tiver sido exposta.
 - [ ] Conferir as policies e os privilégios efetivos das funções `SECURITY DEFINER`, incluindo `search_path` e `EXECUTE`.
